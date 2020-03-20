@@ -1,62 +1,37 @@
 # TypeScript Next.js example
 
-This is a really simple project that shows the usage of Next.js with TypeScript.
+This is a simple project that shows React.Fragment shorthand notation is not working properly on nextjs builds.
 
-## Deploy your own
-
-Deploy the example using [ZEIT Now](https://zeit.co/now):
-
-[![Deploy with ZEIT Now](https://zeit.co/button)](https://zeit.co/import/project?template=https://github.com/zeit/next.js/tree/canary/examples/with-typescript)
-
-## How to use it?
-
-### Using `create-next-app`
-
-Execute [`create-next-app`](https://github.com/zeit/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+First install dependencies
 
 ```bash
-npm init next-app --example with-typescript with-typescript-app
-# or
-yarn create next-app --example with-typescript with-typescript-app
-```
-
-### Download manually
-
-Download the example:
-
-```bash
-curl https://codeload.github.com/zeit/next.js/tar.gz/canary | tar -xz --strip=2 next.js-canary/examples/with-typescript
-cd with-typescript
-```
-
-Install it and run:
-
-```bash
-npm install
-npm run dev
-# or
 yarn
-yarn dev
 ```
 
-Deploy it to the cloud with [ZEIT Now](https://zeit.co/import?filter=next.js&utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+Second run build:
 
-## Notes
-
-This example shows how to integrate the TypeScript type system into Next.js. Since TypeScript is supported out of the box with Next.js, all we have to do is to install TypeScript.
-
-```
-npm install --save-dev typescript
+```bash
+yarn build
 ```
 
-To enable TypeScript's features, we install the type declaratons for React and Node.
+
+Observe the error:
 
 ```
-npm install --save-dev @types/react @types/react-dom @types/node
+❯ yarn build
+yarn run v1.22.0
+$ next build
+Creating an optimized production build  
+
+Failed to compile.
+
+./pages/about.tsx
+Error: with-typescript/pages/about.tsx: transform-react-jsx: pragma has been set but pragmaFrag has not been set
+
+
+> Build error occurred
+Error: > Build failed because of webpack errors
+    at build (with-typescript/node_modules/next/dist/build/index.js:12:900)
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
 ```
-
-When we run `next dev` the next time, Next.js will start looking for any `.ts` or `.tsx` files in our project and builds it. It even automatically creates a `tsconfig.json` file for our project with the recommended settings.
-
-Next.js has built-in TypeScript declarations, so we'll get autocompletion for Next.js' modules straight away.
-
-A `type-check` script is also added to `package.json`, which runs TypeScript's `tsc` CLI in `noEmit` mode to run type-checking separately. You can then include this, for example, in your `test` scripts.
