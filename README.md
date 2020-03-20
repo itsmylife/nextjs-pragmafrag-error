@@ -1,6 +1,7 @@
 # TypeScript Next.js example
 
 This is a simple project that shows React.Fragment shorthand notation is not working properly on nextjs builds.
+A clone of this project: https://github.com/zeit/next.js/tree/canary/examples/with-typescript
 
 First install dependencies
 
